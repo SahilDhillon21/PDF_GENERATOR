@@ -1,0 +1,68 @@
+{% load static %}
+<head>
+    <style>
+        @page {
+            size: a4 portrait;
+            @frame header_frame {           /* Static Frame */
+                -pdf-frame-content: header_content;
+                left: 50pt; width: 512pt; top: 50pt; height: 40pt;
+            }
+            @frame content_frame {          /* Content Frame */
+                left: 50pt; width: 512pt; top: 90pt; height: 632pt;
+            }
+            @frame footer_frame {           /* Another static Frame */
+                -pdf-frame-content: footer_content;
+                left: 50pt; width: 512pt; top: 772pt; height: 20pt;
+            }
+        }
+        html{
+            background-color: rgb(230, 240, 237);
+        }
+
+        td{
+            background-color: rgb(234, 248, 243);
+            color: rgb(1, 13, 113);
+            text-align: center;
+        }
+
+    </style>
+    </head>
+
+    
+    
+    <body>
+        <!-- Content for Static Frame 'header_frame' -->
+        <div id="header_content">
+            <h2 style="text-align: center; padding-top: 5px;">Donation receipt for {{fname}} {{lname}}</h2>
+        </div>
+
+        <img src="static/images/thank-you-for-your-donation.jpg" style="text-align: center;" width="300px" alt="thank you">
+    
+        <!-- HTML Content -->   
+        <hr>
+    
+        <table>
+            <tr>
+     
+                <th>Full name</th>
+                <th>Contact</th>
+                <th>Address</th>
+
+            </tr>
+            <tr>
+                <td>{{fname}} {{lname}}</td>
+                <td>{{email}}, {{phone}}</td>
+                <td>
+                    {{address}} <br>
+                    {{city}} <br>
+                    {{state}} <br>
+                    {{country}} <br>
+                </td>
+            </tr>
+        </table>
+    
+        <hr>
+    
+        <p><strong>Total amount: Rs. {{amount}}</strong></p>
+    </body>
+    </html>
